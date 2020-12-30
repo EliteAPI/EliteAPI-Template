@@ -6,9 +6,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="EliteAPI" Version="3.0.0-alpha0010" />
+    <PackageReference Include="EliteAPI" Version="3.0.0-alpha0929" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="5.0.0" />
-    <PackageReference Include="Somfic.Logging.Console" Version="1.0.4" />
+    <PackageReference Include="Valsom.Logging.PrettyConsole" Version="0.1.0" />
   </ItemGroup>
 
 </Project>

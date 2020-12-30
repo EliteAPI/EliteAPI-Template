@@ -4,39 +4,35 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-using Somfic.Logging.Console;
-using Somfic.Logging.Console.Themes;
-
 using System.Threading.Tasks;
 
+using TemplateProject;
 using TemplateProject.Modules;
+using Valsom.Logging.PrettyConsole;
+using Valsom.Logging.PrettyConsole.Formats;
+using Valsom.Logging.PrettyConsole.Themes;
 
 // Build the host for dependency injection
 var host = Host.CreateDefaultBuilder()
     .ConfigureLogging((context, logger) =>
     {
         logger.ClearProviders();
-        logger.SetMinimumLevel(LogLevel.Trace);
-        logger.AddPrettyConsole(ConsoleThemes.Code);
+        logger.SetMinimumLevel(LogLevel.Information);
+        logger.AddPrettyConsole(ConsoleFormats.Default, ConsoleThemes.OneDarkPro);
     })
 
-    .ConfigureServices((context, service) =>
+    .ConfigureServices((context, services) =>
     {
-        // Add EliteAPI's services to the dependency injection system
-        service.AddEliteAPI(config =>
+        services.AddEliteAPI(configuration =>
         {
-            // Add our ChatModule class to the event pipeline
-            config.AddEventModule<ChatModule>();
+            configuration.AddEventModule<ChatModule>();
         });
     })
 
     .Build();
 
-// Create an instance of our Core class
-var core = ActivatorUtilities.CreateInstance<TemplateProject.Core>(host.Services);
+var core = ActivatorUtilities.CreateInstance<Core>(host.Services);
 
-// Execute the Run method inside our Core class
 await core.Run();
 
-// Run forever
 await Task.Delay(-1);
