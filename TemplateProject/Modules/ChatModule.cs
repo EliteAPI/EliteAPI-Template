@@ -16,7 +16,7 @@ namespace TemplateProject.Modules
         private readonly ILogger<ChatModule> _log;
 
         /// <inheritdoc />
-        public ChatModule(IEliteDangerousAPI api, ILogger<ChatModule> log) : base(api)
+        public ChatModule(IEliteDangerousApi api, ILogger<ChatModule> log) : base(api)
         {
             _log = log;
         }

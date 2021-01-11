@@ -7,10 +7,10 @@ namespace TemplateProject
     // Core class of our application
     public class Core
     {
-        private readonly IEliteDangerousAPI _api;
+        private readonly IEliteDangerousApi _api;
         private readonly ILogger<Core> _log;
 
-        public Core(ILogger<Core> log, IEliteDangerousAPI api)
+        public Core(ILogger<Core> log, IEliteDangerousApi api)
         {
             // Get our dependencies through dependency injection
             _log = log;
