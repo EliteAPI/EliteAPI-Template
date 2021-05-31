@@ -20,7 +20,7 @@ namespace TemplateProject
         public async Task Run()
         {
             // Log whenever we change the landing gear
-            _api.Status.Gear.OnChange += (sender, isDeployed) =>
+            _api.Ship.Gear.OnChange += (sender, isDeployed) =>
             {
                 _log.LogInformation(isDeployed ? "Landing gear deployed" : "Landing gear retracted");
             };
